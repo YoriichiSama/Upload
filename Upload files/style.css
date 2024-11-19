@@ -1,0 +1,201 @@
+/* إعادة تعيين بعض الأنماط الافتراضية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* إضافة تأثير Fade-in للصفحة */
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: #121212;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    font-size: 18px;
+    opacity: 0; /* بداية الصفحة غير مرئية */
+    transition: opacity 2s ease-in-out; /* تأثير fade-in لمدة 2 ثانية */
+}
+
+/* هذا سيجعل الصفحة مرئية عند اكتمال تحميلها */
+body.loaded {
+    opacity: 1;
+}
+
+/* إضافة تأثير Fade-in للصورة الخلفية */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/845/853/277/kimetsu-no-yaiba-yoriichi-yoriichi-tsugikuni-demon-eyes-demon-face-hd-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px);
+    opacity: 0;
+    animation: fadeInBackground 3s ease-in-out forwards;
+    z-index: -1;
+}
+
+/* تأثير fade-in على الصورة الخلفية */
+@keyframes fadeInBackground {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* رسالة الترحيب */
+.welcome-message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    padding: 15px 0px;
+    border-radius: 10px;
+    font-size: 22px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+.welcome-message.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* تخصيص container باستخدام flexbox */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%;
+}
+
+/* تخصيص البطاقة داخل container */
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* العنوان */
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+/* الـ Form */
+.form-group {
+    text-align: left;
+}
+
+.label {
+    font-size: 18px;
+    color: #ddd;
+    margin-bottom: 8px;
+}
+
+/* تنسيق عنصر المدخل لرفع الملف */
+.file-input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #444;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    background: #222;
+    color: #fff;
+    transition: border 0.3s ease;
+}
+
+.file-input:focus {
+    border-color: #420000; /* تغيير اللون عند التمرير */
+}
+
+/* زر رفع مع تأثير الأيقونة */
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #420000, #000000);
+    color: white;
+    border-radius: 12px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+    background: linear-gradient(to right, #180000, #000000);
+    transform: translateY(-5px);
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+.submit-button i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+}
+
+/* رسائل الرد */
+.response-message {
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+.text-red-500 {
+    background-color: rgba(255, 99, 71, 0.1);
+    color: #ff6347;
+}
+
+.text-green-500 {
+    background-color: rgba(34, 139, 34, 0.1);
+    color: #228b22;
+}
+
+.text-yellow-500 {
+    background-color: rgba(255, 215, 0, 0.1);
+    color: #ffd700;
+}
+
+/* تخصيص مؤشر التحميل */
+.loading-message {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
